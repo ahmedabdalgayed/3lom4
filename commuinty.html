@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مجتمع البراند</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Rubik', sans-serif;
+            background-color: #fcf3e4;
+            color: #d4800e;
+            /* color: #333; */
+            line-height: 1.6;
+        }
+
+        /* naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaav */
+        .navbar {
+            position: fixed;
+            /* ثابت */
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1100;
+            width: 100%;
+            background: #0d6efd;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 25px;
+        }
+
+        .brand {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+
+        
+        /* ########################logim */
+        /* زر تسجيل الدخول */
+.login-btn {
+  background: #fff;
+  color: #0d6efd;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Rubik', sans-serif;
+}
+
+/* الأيقونة (اختياري) */
+.login-btn i {
+  font-size: 16px;
+}
+
+/* عند المرور عليه */
+.login-btn:hover {
+  background: #0d6efd;
+  color: #fff;
+  border-color: #fff;
+  box-shadow: 0 0 10px rgba(13, 110, 253, 0.3);
+  transform: translateY(-2px);
+}
+
+/* في الموبايل */
+@media (max-width: 768px) {
+  .login-btn {
+display: none;
+  }
+}
+
+        /* ########################logim */
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color .3s;
+        }
+
+        .nav-links a:hover {
+            color: #d1d1d1;
+        }
+
+        /* زر المزيد */
+        .more-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #fff;
+            color: #0d6efd;
+            padding: 6px 12px;
+            margin-left: 40px;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-inline-start: 10px;
+            /* يبعد الزر شوية عن الحافة */
+        }
+
+        .more-btn:hover {
+            background: #f1f1f1;
+        }
+
+        .menu-icon {
+            font-size: 20px;
+        }
+
+        /* السايدبار يطلع من الشمال */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translateX(-100%);
+            /* ← بدل right */
+            width: 250px;
+            height: 100%;
+            background: #0d6efd;
+            color: #fff;
+            padding: 20px;
+            transition: transform .4s ease;
+            /* ← بدل right */
+            z-index: 1200;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, .2);
+            padding-left: 30px;
+        }
+
+        .sidebar.active {
+            transform: translateX(0);
+
+        }
+
+        /* ← بدل right:0 */
+        .sidebar h3 {
+            margin-bottom: 20px;
+        }
+
+        .sidebar a {
+            display: block;
+            margin: 12px 0;
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color .3s;
+        }
+
+        .sidebar a:hover {
+            color: #d1d1d1;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 22px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        /* Overlay لتعتيم الخلفية وإلتقاط الضغطات */
+        .overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, .35);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .3s ease;
+            z-index: 1150;
+        }
+
+        .overlay.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* رسبونسف */
+        @media (max-width: 768px) {
+            .nav-links a {
+                display: none;
+            }
+        }
+
+        /* naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaav */
+
+        header {
+            text-align: center;
+            padding: 100px 20px;
+            background: linear-gradient(135deg, #0052D4, #4364F7, #6FB1FC);
+            color: #fff;
+            animation: fadeIn 1.5s ease;
+        }
+
+        header h1 {
+            font-size: 32px;
+            margin: 0;
+        }
+
+        section {
+            padding: 60px 20px;
+            text-align: center;
+            animation: slideUp 1s ease;
+        }
+
+        section h2 {
+            font-size: 26px;
+            margin-bottom: 40px;
+            color: #0052D4;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgb(117, 117, 117);
+            padding: 20px;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .card h3 {
+            margin: 15px 0 10px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .card p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .stat-card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgb(117, 117, 117);
+            padding: 30px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #0052D4;
+            transition: 0.3s;
+        }
+
+        .stat-card span {
+            display: block;
+            font-size: 28px;
+            margin-top: 10px;
+            color: #ff5722;
+        }
+
+
+
+
+  footer {
+      background-color: #09404e;
+      color: white;
+      padding: 40px 20px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+ 
+    }
+
+    .footer-section {
+      flex: 1;
+      min-width: 250px;
+      margin: 10px;
+    }
+
+    #footer-linkes {
+       text-align: center; 
+    }
+
+    .footer-section h3 {
+        /* text-align: center; */
+      color: #e4b467;
+      margin-bottom: 10px;
+    }
+
+    .footer-links a {
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+      color: #e4b467;
+      text-decoration: none;
+      margin: 0 10px;
+      display: inline-block;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    .social-icons {
+        text-align: center;
+      margin-top: 15px;
+    }
+
+    .social-icons a {
+        text-align: center;
+      color: white;
+      margin-left: 10px;
+      font-size: 20px;
+      transition: 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: #e4b467;
+      transform: scale(1.1);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      padding-top: 15px;
+      margin-top: 20px;
+      width: 100%;
+    }
+
+    footer a {
+        text-align: center;
+      text-decoration: none;
+    }
+
+        @media(max-width: 600px) {
+            header h1 {
+                font-size: 2rem;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* تأثير تكبير بسيط على الأزرار اللي ليها خلفية */
+a.button,
+header a,
+section a[style*="background"],
+.login-btn,
+.more-btn {
+  display: inline-block;
+  transition: transform 0.25s ease;
+}
+
+a.button:hover,
+header a:hover,
+section a[style*="background"]:hover,
+.login-btn:hover,
+.more-btn:hover {
+  transform: scale(1.08);
+}
+
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="brand">عُلوم عقارية</div>
+
+
+                <a href="login.html" class="login-btn">
+  <i class="fa fa-user"></i>
+</a>
+
+        
+
+        <div class="nav-links">
+        <a href="index.php">الرئيسية</a>
+        <a href="Aodweya.html">عضوية علوم عقارية</a>
+        <a href="commuinty.html">مجتمع Whatsapp</a>
+        <a href="family.html">أهل عُلوم عقارية</a>
+        <a href="SharQatna.html">شركاؤنا</a>
+        <a href="3orod.html">المزايا الإضافية</a>
+        <a target="_blank" href="https://alwmaqaryh.zid.store/blogs/%D9%85%D8%AA%D8%AC%D8%B1-%D8%B9%D9%84%D9%88%D9%85-%D8%B9%D9%82%D8%A7%D8%B1%D9%8A%D8%A9">المتجر</a>
+<!-- <div class="more-btn" id="moreBtn"> -->
+        <a href="forasAmal.html">فرص العمل</a>
+        <a href="seyasat.html">السياسات</a>
+  <span class="menu-icon">☰</span>
+<!-- </div> -->
+
+        </div>
+    </nav>
+
+    <!-- سايد بار (من الشمال) -->
+    <aside class="sidebar" id="sidebar">
+        <button class="close-btn" id="closeSidebarBtn">×</button>
+        <h3>القائمة</h3>
+        <div class="nav-links">
+        <a href="index.html">الرئيسية</a>
+        <a href="Aodweya.html">عضوية علوم عقارية</a>
+        <a href="commuinty.html">مجتمع Whatsapp</a>
+        <a href="family.html">أهل عُلوم عقارية</a>
+        <a href="SharQatna.html">شركاؤنا</a>
+        <a href="3orod.html">المزايا الإضافية</a>
+        <a target="_blank" href="https://alwmaqaryh.zid.store/blogs/%D9%85%D8%AA%D8%AC%D8%B1-%D8%B9%D9%84%D9%88%D9%85-%D8%B9%D9%82%D8%A7%D8%B1%D9%8A%D8%A9">المتجر</a>
+<div class="more-btn" id="moreBtn">
+        <a href="forasAmal.html">فرص العمل</a>
+        <a href="seyasat.html">السياسات</a>
+    </aside>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- الهيدر -->
+    <header>
+        <h1>مجتمع WhatsApp منظّم</h1>
+    </header>
+
+    <!-- المزايا -->
+    <section>
+        <h2>المزايا</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>🌍 خاص بمنطقة معينة</h3>
+            </div>
+            <div class="card">
+                <h3>👥 أعضاء بأسماء صريحة</h3>
+            </div>
+            <div class="card">
+                <h3>📂 مجموعات باهتمامات متنوعة</h3>
+            </div>
+            <div class="card">
+                <h3>📩 نماذج خاصة للاستفسار</h3>
+            </div>
+            <div class="card">
+                <h3>📝 نماذج لنشر الخدمات الشخصية</h3>
+            </div>
+            <div class="card">
+                <h3>⚙️ إدارة ومتابعة خاصة</h3>
+            </div>
+            <div class="card">
+                <h3>📜 سياسة واضحة منظمة</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- المناطق المتاحة -->
+    <section>
+        <h2>المناطق المتاحة</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>📍 الشرقية</h3>
+            </div>
+            <div class="card">
+                <h3>📍 القصيم</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- الإحصائيات -->
+    <section>
+        <h2>إحصائيات المجتمع</h2>
+        <div class="stats">
+            <div class="stat-card">عدد الأعضاء <span data-target="3500">0</span></div>
+            <div class="stat-card">عدد المجتمعات <span data-target="12">0</span></div>
+            <div class="stat-card">عدد المجموعات <span data-target="35">0</span></div>
+            <div class="stat-card">عدد الاستفسارات <span data-target="734">0</span></div>
+        </div>
+    </section>
+    <!-- قسم الدعوة للانضمام (CTA) -->
+    <section
+        style="background: linear-gradient(135deg, #0052D4, #4364F7, #6FB1FC); color: #fff; padding: 70px 20px; text-align: center; border-radius: 12px; margin: 50px auto; max-width: 900px;">
+        <h2 style="font-size: 28px; margin-bottom: 20px;">مكانك بيننا ✨</h2>
+        <p style="font-size: 18px; margin-bottom: 30px;">
+            انضم إلى مجتمعنا المنظّم وكن جزءًا من شبكة قوية من الأعضاء والخبراء.
+        </p>
+        <a href="https://alwmaqaryh.zid.store/blogs/%D9%85%D8%AA%D8%AC%D8%B1-%D8%B9%D9%84%D9%88%D9%85-%D8%B9%D9%82%D8%A7%D8%B1%D9%8A%D8%A9" target="_blank"
+            style="display: inline-block; background: #ff5722; color: #fff; text-decoration: none; font-size: 18px; padding: 14px 30px; border-radius: 10px; transition: 0.3s;">
+            🚀 انضم الآن
+        </a>
+    </section>
+  <footer>
+    <!-- قسم قصتنا -->
+    <div class="footer-section">
+      <h3>قصتنا:</h3>
+      <p>
+        لم ننتظر أن تصلنا المعلومة… صنعنا لها مجتمعًا!  
+        بدأت عُلوم عقارية في شوال 1445هـ بجمع المرخصين والعلاقات المتفرقة في مكان واحد لتبادل الخبرة والمعرفة بثقة.  
+        تحولت الفكرة إلى مجتمع منظم يسعى لتوليد الفرص وتعزيز الاستثمار، حيث تُصنع المعلومة وتُبنى العلاقات وتُفتح الأبواب.
+      </p>
+    </div>
+
+    <!-- قسم الروابط والسوشيال -->
+    <div class="footer-section">
+      <h3>روابط هامة:</h3>
+      <div class="footer-links">
+        <a href="#" target="_blank">السياسات</a> |
+        <a href="#" target="_blank">الأسئلة الشائعة</a>
+      </div>
+
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-x-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+
+    <!-- القسم السفلي -->
+    <div class="footer-bottom">
+      <p>© 2025 مجتمع علوم عقارية - جميع الحقوق محفوظة</p>
+    </div>
+  </footer>
+
+    <script>
+        // navvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+        const moreBtn = document.getElementById('moreBtn');
+        const closeBtn = document.getElementById('closeSidebarBtn');
+
+        function openSidebar() {
+            sidebar.classList.add('active');
+            overlay.classList.add('show');
+        }
+        function closeSidebar() {
+            sidebar.classList.remove('active');
+            overlay.classList.remove('show');
+        }
+        function toggleSidebar() {
+            sidebar.classList.contains('active') ? closeSidebar() : openSidebar();
+        }
+
+        // فتح وإغلاق
+        moreBtn.addEventListener('click', (e) => { e.stopPropagation(); toggleSidebar(); });
+        closeBtn.addEventListener('click', (e) => { e.stopPropagation(); closeSidebar(); });
+
+        // إغلاق عند الضغط على أي مكان في الشاشة
+        overlay.addEventListener('click', closeSidebar);
+        document.addEventListener('click', (e) => {
+            if (sidebar.classList.contains('active')
+                && !sidebar.contains(e.target)
+                && e.target !== moreBtn
+                && !moreBtn.contains(e.target)) {
+                closeSidebar();
+            }
+        });
+
+        // منع الإغلاق أثناء الضغط داخل السايدبار
+        sidebar.addEventListener('click', (e) => e.stopPropagation());
+
+        // إغلاق بـ Escape
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeSidebar(); });
+        // navvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+
+        const counters = document.querySelectorAll('.stat-card span');
+        const speed = 150; // كل ما الرقم يزيد يكون أبطأ (خليته أبطأ من الأول)
+        const options = { threshold: 0.6 };
+
+        const startCounting = (entry) => {
+            if (entry.isIntersecting) {
+                const counter = entry.target;
+                const target = +counter.getAttribute('data-target');
+                let count = 0;
+                const increment = Math.ceil(target / speed);
+
+                const updateCount = () => {
+                    if (count < target) {
+                        count += increment;
+                        counter.innerText = count;
+                        setTimeout(updateCount, 40); // بطّأت الزمن هنا كمان
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                updateCount();
+                observer.unobserve(counter); // عشان يشتغل مرة واحدة بس
+            }
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(startCounting);
+        }, options);
+
+        counters.forEach(counter => {
+            observer.observe(counter);
+        });
+    </script>
+
+</body>
+
+</html>

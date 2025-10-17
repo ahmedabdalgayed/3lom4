@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>السياسات والخصوصية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Rubik', sans-serif;
+            background: #f7f9fc;
+            color: #333;
+            line-height: 1.8;
+        }
+
+
+        /* naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaav */
+        .navbar {
+            position: fixed;
+            /* ثابت */
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1100;
+            width: 100%;
+            background: #0d6efd;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 25px;
+        }
+
+        .brand {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+          /* ########################logim */
+        /* زر تسجيل الدخول */
+.login-btn {
+  background: #fff;
+  color: #0d6efd;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Rubik', sans-serif;
+}
+
+/* الأيقونة (اختياري) */
+.login-btn i {
+  font-size: 16px;
+}
+
+/* عند المرور عليه */
+.login-btn:hover {
+  background: #0d6efd;
+  color: #fff;
+  border-color: #fff;
+  box-shadow: 0 0 10px rgba(13, 110, 253, 0.3);
+  transform: translateY(-2px);
+}
+
+/* في الموبايل */
+@media (max-width: 768px) {
+  .login-btn {
+display: none;
+  }
+}
+
+        /* ########################logim */
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color .3s;
+        }
+
+        .nav-links a:hover {
+            color: #d1d1d1;
+        }
+
+        /* زر المزيد */
+        .more-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #fff;
+            color: #0d6efd;
+            padding: 6px 12px;
+            margin-left: 40px;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-inline-start: 10px;
+            /* يبعد الزر شوية عن الحافة */
+        }
+
+        .more-btn:hover {
+            background: #f1f1f1;
+        }
+
+        .menu-icon {
+            font-size: 20px;
+        }
+
+        /* السايدبار يطلع من الشمال */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translateX(-100%);
+            /* ← بدل right */
+            width: 250px;
+            height: 100%;
+            background: #0d6efd;
+            color: #fff;
+            padding: 20px;
+            transition: transform .4s ease;
+            /* ← بدل right */
+            z-index: 1200;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, .2);
+            padding-left: 30px;
+        }
+
+        .sidebar.active {
+            transform: translateX(0);
+
+        }
+
+        /* ← بدل right:0 */
+        .sidebar h3 {
+            margin-bottom: 20px;
+        }
+
+        .sidebar a {
+            display: block;
+            margin: 12px 0;
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color .3s;
+        }
+
+        .sidebar a:hover {
+            color: #d1d1d1;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 22px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        /* Overlay لتعتيم الخلفية وإلتقاط الضغطات */
+        .overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, .35);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .3s ease;
+            z-index: 1150;
+        }
+
+        .overlay.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* رسبونسف */
+        @media (max-width: 768px) {
+            .nav-links a {
+                display: none;
+            }
+        }
+
+        /* naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaav */
+
+        header {
+            text-align: center;
+            padding: 120px 20px;
+            background: linear-gradient(135deg, #0052D4, #4364F7, #6FB1FC);
+            color: #fff;
+            animation: fadeIn 1.5s ease;
+        }
+
+        header h1 {
+            font-size: 32px;
+            margin: 0;
+        }
+
+        section {
+            padding: 50px 20px;
+            max-width: 900px;
+            margin: auto;
+            animation: slideUp 1s ease;
+        }
+
+        section h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #0052D4;
+        }
+
+        section p {
+            margin-bottom: 15px;
+            font-size: 16px;
+            color: #444;
+        }
+
+        ul {
+            text-align: right;
+            padding-right: 20px;
+            margin: 0 0 30px;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+            font-size: 15px;
+            color: #555;
+            list-style: "✔️ ";
+        }
+
+  footer {
+      background-color: #09404e;
+      color: white;
+      padding: 40px 20px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      text-align: center;
+    }
+
+    .footer-section {
+      flex: 1;
+      min-width: 250px;
+      margin: 10px;
+    }
+
+    .footer-section h3 {
+        text-align: center;
+      color: #e4b467;
+      margin-bottom: 10px;
+    }
+
+    .footer-links a {
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+      color: #e4b467;
+      text-decoration: none;
+      margin: 0 10px;
+      display: inline-block;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    .social-icons {
+        text-align: center;
+      margin-top: 15px;
+    }
+
+    .social-icons a {
+        text-align: center;
+      color: white;
+      margin-left: 10px;
+      font-size: 20px;
+      transition: 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: #e4b467;
+      transform: scale(1.1);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      padding-top: 15px;
+      margin-top: 20px;
+      width: 100%;
+    }
+
+    footer a {
+        text-align: center;
+      text-decoration: none;
+    }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* تأثير تكبير بسيط على الأزرار اللي ليها خلفية */
+a.button,
+header a,
+section a[style*="background"],
+.login-btn,
+.more-btn {
+  display: inline-block;
+  transition: transform 0.25s ease;
+}
+
+a.button:hover,
+header a:hover,
+section a[style*="background"]:hover,
+.login-btn:hover,
+.more-btn:hover {
+  transform: scale(1.08);
+}
+
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="brand">عُلوم عقارية</div>
+ 
+        
+        <div class="nav-links">
+            <a href="index.html">الرئيسية</a>
+            <a target="_blank" href="family.html">أهل عُلوم عقارية</a>
+            <a target="_blank" href="commuinty.html">مجتمعنا</a>
+            <a target="_blank" href="3orod.html">عروضنا</a>
+            <div id="moreBtn" class="more-btn">
+                اضغط للمزيد <span class="menu-icon">☰</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- سايد بار (من الشمال) -->
+    <aside class="sidebar" id="sidebar">
+        <button class="close-btn" id="closeSidebarBtn">×</button>
+        <h3>القائمة</h3>
+        <a href="index.html">الرئيسية</a>
+        <a target="_blank" href="family.html">أهل عُلوم عقارية</a>
+        <a target="_blank" href="commuinty.html">مجتمعنا</a>
+        <a target="_blank" href="3orod.html">عروضنا</a>
+        <a target="_blank" href="SharQatna.html">شراكاتنا</a>
+        <a target="_blank" href="forasAmal.html">فرص العمل</a>
+        <a target="_blank" href="seyasat.html">السياسات</a>
+        <a target="_blank" href="https://alwmaqaryh.zid.store/blogs/%D9%85%D8%AA%D8%AC%D8%B1-%D8%B9%D9%84%D9%88%D9%85-%D8%B9%D9%82%D8%A7%D8%B1%D9%8A%D8%A9">المتجر</a>
+    </aside>
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- الهيدر -->
+    <header>
+        <h1>السياسات و الخصوصية</h1>
+    </header>
+
+    <!-- السياسة العامة -->
+    <section>
+        <h2>السياسة العامة</h2>
+        <p>
+            نحن في شركة <strong>علوم عقارية</strong> نلتزم بتقديم خدمات عقارية متكاملة تلبي احتياجات عملائنا وتواكب
+            تطلعات السوق.
+            تعتمد سياستنا العامة على الشفافية، الجودة، والالتزام بأعلى المعايير المهنية في جميع تعاملاتنا.
+        </p>
+        <ul>
+            <li>توفير حلول عقارية تشمل البيع، الشراء، التأجير، وإدارة الأملاك.</li>
+            <li>الالتزام بالقوانين والأنظمة المحلية المنظمة للقطاع العقاري.</li>
+            <li>تقديم استشارات عقارية متخصصة قائمة على المعرفة والخبرة.</li>
+            <li>ضمان الشفافية في جميع المعاملات المالية والإجرائية.</li>
+            <li>تطوير خدماتنا بشكل مستمر لمواكبة احتياجات السوق والعملاء.</li>
+        </ul>
+    </section>
+
+    <!-- سياسة الخصوصية -->
+    <section>
+        <h2>سياسة الخصوصية</h2>
+        <p>
+            نولي أهمية قصوى لحماية بيانات عملائنا ونسعى لضمان سرية جميع المعلومات التي يتم جمعها أو مشاركتها عبر منصاتنا
+            الإلكترونية.
+            باستخدامك لخدماتنا، فإنك توافق على سياسة الخصوصية التالية:
+        </p>
+        <ul>
+            <li>جمع البيانات الشخصية يتم فقط للأغراض المتعلقة بالخدمات العقارية.</li>
+            <li>لن يتم مشاركة بيانات العملاء مع أي طرف ثالث دون موافقة مسبقة.</li>
+            <li>استخدام تقنيات التشفير لحماية المعلومات المخزنة أو المنقولة.</li>
+            <li>إتاحة إمكانية تعديل أو حذف بيانات العميل عند الطلب.</li>
+            <li>الالتزام بتحديث أنظمة الأمان بشكل دوري لمواجهة التهديدات السيبرانية.</li>
+        </ul>
+    </section>
+
+    <!-- سياسة الاسترجاع -->
+    <section>
+        <h2>سياسة الاسترجاع</h2>
+        <p>
+            تهدف سياسة الاسترجاع إلى ضمان حقوق عملائنا وتوفير تجربة موثوقة في جميع تعاملاتنا.
+            نضع الشروط التالية للاسترجاع أو استرداد المبالغ المدفوعة:
+        </p>
+        <ul>
+            <li>يحق للعميل طلب استرجاع المبلغ في حال عدم تقديم الخدمة المتفق عليها.</li>
+            <li>تتم عملية الاسترجاع خلال مدة أقصاها 14 يوم عمل.</li>
+            <li>لا يشمل الاسترجاع الخدمات التي تم تنفيذها بشكل كامل قبل الطلب.</li>
+            <li>الرسوم الإدارية أو المصاريف البنكية قد تخصم من المبلغ المسترجع.</li>
+            <li>تتم جميع عمليات الاسترداد وفق القوانين والأنظمة المحلية المعمول بها.</li>
+        </ul>
+    </section>
+
+    <!-- سياسة الاستخدام العادل -->
+    <section>
+        <h2>سياسة الاستخدام العادل</h2>
+        <p>
+            نلتزم في شركة <strong>علوم عقارية</strong> بتوفير منصات إلكترونية وخدمات عقارية آمنة وسهلة الاستخدام.
+            ويشمل ذلك التزام العملاء بعدم إساءة استخدام المنصات أو الخدمات بأي شكل من الأشكال.
+        </p>
+        <ul>
+            <li>يُمنع استخدام منصاتنا في أي أنشطة غير قانونية أو مخالفة للأنظمة المحلية.</li>
+            <li>لا يُسمح بانتحال صفة الغير أو تقديم بيانات غير صحيحة عند استخدام الخدمات.</li>
+            <li>يلتزم العملاء باستخدام الخدمات العقارية فقط للأغراض المخصصة لها.</li>
+            <li>تحتفظ الشركة بحق تعليق أو إيقاف أي حساب في حال تم اكتشاف إساءة استخدام.</li>
+            <li>تُعتبر جميع الحقوق الفكرية والتجارية الخاصة بالموقع مملوكة للشركة ولا يجوز استغلالها دون إذن مكتوب.</li>
+        </ul>
+    </section>
+
+    <!-- سياسة حماية المستهلك -->
+    <section>
+        <h2>سياسة حماية المستهلك</h2>
+        <p>
+            تركّز شركة <strong>علوم عقارية</strong> على حماية عملائها وضمان حقوقهم في جميع التعاملات،
+            سواء كانت متعلقة بالعقارات السكنية أو التجارية أو الاستثمارية.
+        </p>
+        <ul>
+            <li>التزام الشركة بتقديم معلومات دقيقة وموثوقة عن العقارات والخدمات.</li>
+            <li>توفير آلية واضحة لتقديم الشكاوى أو الاستفسارات عبر قنوات رسمية.</li>
+            <li>الرد على طلبات العملاء خلال مدة زمنية لا تتجاوز 7 أيام عمل.</li>
+            <li>ضمان السرية الكاملة لجميع الشكاوى أو البلاغات المقدمة من العملاء.</li>
+            <li>العمل على حل النزاعات ودّياً بما يحفظ حقوق جميع الأطراف، واللجوء للجهات الرسمية عند الحاجة.</li>
+        </ul>
+    </section>
+
+
+    <!-- الفوتر -->
+  <footer>
+    <!-- قسم قصتنا -->
+    <div class="footer-section">
+      <h3>قصتنا:</h3>
+      <p>
+        لم ننتظر أن تصلنا المعلومة… صنعنا لها مجتمعًا!  
+        بدأت عُلوم عقارية في شوال 1445هـ بجمع المرخصين والعلاقات المتفرقة في مكان واحد لتبادل الخبرة والمعرفة بثقة.  
+        تحولت الفكرة إلى مجتمع منظم يسعى لتوليد الفرص وتعزيز الاستثمار، حيث تُصنع المعلومة وتُبنى العلاقات وتُفتح الأبواب.
+      </p>
+    </div>
+
+    <!-- قسم الروابط والسوشيال -->
+    <div class="footer-section">
+      <h3>روابط هامة:</h3>
+      <div class="footer-links">
+        <a href="#" target="_blank">السياسات</a> |
+        <a href="#" target="_blank">الأسئلة الشائعة</a>
+      </div>
+
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-x-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+
+    <!-- القسم السفلي -->
+    <div class="footer-bottom">
+      <p>© 2025 مجتمع علوم عقارية - جميع الحقوق محفوظة</p>
+    </div>
+  </footer>
+
+
+
+    <script>
+        // navvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+        const moreBtn = document.getElementById('moreBtn');
+        const closeBtn = document.getElementById('closeSidebarBtn');
+
+        function openSidebar() {
+            sidebar.classList.add('active');
+            overlay.classList.add('show');
+        }
+        function closeSidebar() {
+            sidebar.classList.remove('active');
+            overlay.classList.remove('show');
+        }
+        function toggleSidebar() {
+            sidebar.classList.contains('active') ? closeSidebar() : openSidebar();
+        }
+
+        // فتح وإغلاق
+        moreBtn.addEventListener('click', (e) => { e.stopPropagation(); toggleSidebar(); });
+        closeBtn.addEventListener('click', (e) => { e.stopPropagation(); closeSidebar(); });
+
+        // إغلاق عند الضغط على أي مكان في الشاشة
+        overlay.addEventListener('click', closeSidebar);
+        document.addEventListener('click', (e) => {
+            if (sidebar.classList.contains('active')
+                && !sidebar.contains(e.target)
+                && e.target !== moreBtn
+                && !moreBtn.contains(e.target)) {
+                closeSidebar();
+            }
+        });
+
+        // منع الإغلاق أثناء الضغط داخل السايدبار
+        sidebar.addEventListener('click', (e) => e.stopPropagation());
+
+        // إغلاق بـ Escape
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeSidebar(); });
+        // navvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+    </script>
+</body>
+
+</html>
