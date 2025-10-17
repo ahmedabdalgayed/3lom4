@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>الرئيسية - مجتمع علوم عقارية</title>
-    <link rel="icon" type="image/png" href="PNG. شعار وأيقونة علوم عقارية">
+    <link rel="icon" type="image/png" href="12345.PNG">
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -1420,4 +1420,5 @@ window.addEventListener('scroll', startCounting);
 
 
 </html>
+
 
